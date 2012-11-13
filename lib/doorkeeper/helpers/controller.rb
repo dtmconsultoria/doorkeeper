@@ -48,6 +48,10 @@ module Doorkeeper
         self.response_body = error.body.to_json
         self.status        = error.status
       end
+
+      def skip_authorization?
+        instance_eval &Doorkeeper.configuration.skip_authorization
+      end
     end
   end
 end

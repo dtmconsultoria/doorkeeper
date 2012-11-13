@@ -142,10 +142,12 @@ module Doorkeeper
              warn(I18n.translate('doorkeeper.errors.messages.credential_flow_not_configured'))
              nil
            }
+
     option :access_token_expires_in,      :default => 7200
     option :authorization_code_expires_in,:default => 600
     option :orm, :default => :active_record
     option :test_redirect_uri, :default => 'urn:ietf:wg:oauth:2.0:oob'
+    option :skip_authorization, :default => lambda { |routes| }
 
     def refresh_token_enabled?
       !!@refresh_token_enabled
